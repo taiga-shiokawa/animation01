@@ -1,15 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
 .container {
+    padding: 2rem;
+    min-height: 100vh;
+}
+
+.animation-group {
+    margin-bottom: 3rem;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.box-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    flex-wrap: wrap;
     gap: 2rem;
-    background-color: #f0f0f0;
 }
 
 .box {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background-color: #3498db;
     color: white;
     display: flex;
@@ -18,63 +42,146 @@
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* バウンスアニメーション */
+/* 基本アニメーション */
 .bounce {
     animation: bounce 1s infinite;
 }
 
 @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
 
-/* 回転アニメーション */
 .rotate:hover {
     animation: rotate 1s infinite linear;
 }
 
 @keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* 拡大縮小アニメーション */
 .scale:hover {
     animation: scale 1s infinite;
 }
 
 @keyframes scale {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 
-/* スライドアニメーション */
 .slide {
     animation: slide 2s infinite;
 }
 
 @keyframes slide {
-    0% {
-        transform: translateX(0);
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
+/* 応用アニメーション */
+.shake {
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.flip {
+    animation: flip 2s infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes flip {
+    0% { transform: perspective(400px) rotateY(0); }
+    100% { transform: perspective(400px) rotateY(360deg); }
+}
+
+.rainbow {
+    animation: rainbow 3s infinite;
+}
+
+@keyframes rainbow {
+    0% { background-color: #ff0000; }
+    20% { background-color: #ff8000; }
+    40% { background-color: #ffff00; }
+    60% { background-color: #00ff00; }
+    80% { background-color: #0000ff; }
+    100% { background-color: #ff0000; }
+}
+
+/* ホバーエフェクト */
+.glow:hover {
+    animation: glow 1s infinite;
+    box-shadow: 0 0 20px #3498db;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px #3498db; }
+    50% { box-shadow: 0 0 40px #3498db; }
+}
+
+.swing:hover {
+    animation: swing 1s infinite;
+    transform-origin: top center;
+}
+
+@keyframes swing {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+}
+
+.float:hover {
+    animation: float 2s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0); }
+}
+
+.jello:hover {
+    animation: jello 1s infinite;
+}
+
+@keyframes jello {
+    0%, 100% { transform: scale3d(1, 1, 1); }
+    30% { transform: scale3d(1.25, 0.75, 1); }
+    40% { transform: scale3d(0.75, 1.25, 1); }
+    50% { transform: scale3d(1.15, 0.85, 1); }
+    65% { transform: scale3d(0.95, 1.05, 1); }
+    75% { transform: scale3d(1.05, 0.95, 1); }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .box-container {
+        gap: 1rem;
     }
-    50% {
-        transform: translateX(20px);
-    }
-    100% {
-        transform: translateX(0);
+    
+    .box {
+        width: 100px;
+        height: 100px;
+        font-size: 0.8rem;
     }
 } 
